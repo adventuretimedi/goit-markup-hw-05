@@ -9,18 +9,18 @@
   --background-grey: #2f303a;
   --header-border-grey: #ECECEC;
   --portfolio-cards-border:#EEEEEE;
-  --icon-white: rgba(255, 255, 255, 1);
-  --icon-grey: rgba(175, 177, 184, 1);
+  --icon-grey: #AFB1B8;
   --footer-contacts-soft-grey: rgba(255, 255, 255, 0.6);
   --hero-gradient: linear-gradient(to right,
       rgba(47, 48, 58, 0.4),
       rgba(47, 48, 58, 0.4));
   --social-link-footer: rgba(255, 255, 255, 0.1);
-  --client-box-border: #AFB1B8;
   --about-header-color: rgba(255, 255, 255, 1);
   --about-header-bg-color: rgba(47, 48, 58, 0.8);
   --portf-project-overflow: rgba(33, 150, 243, 0.9);
-  
+  --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+  --exit-button-color: rgba(0, 0, 0, 0.1);
+  --absolute-black: #000000;
 }
 /* --------------------------------Загальне оформлення для сторінки--------------------------------- */
 body {
@@ -113,18 +113,21 @@ header {
 }
 
 .link::after {
-position: absolute;
+ position: absolute;
 
  content: '';
  display: block;
  width: 100%;
- height: 5px;
+ height: 3px;
  left: 0;
  bottom: 0;
  background-color: var(--accent-color);
  opacity: 0;
 
- transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+transition-property: opacity,;
+transition-duration: 250ms;
+transition-timing-function: var(--cubic);
+
 }
 
 .link:hover::after,
@@ -196,7 +199,7 @@ margin-left: 30px;
 
   transition-property: color;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--cubic);
   
 }
 
@@ -223,7 +226,7 @@ margin-left: 30px;
 
   transition-property: fill;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--cubic);
 }
 /* ----------------------------------------- hero---------------------------------------------------- */
 
@@ -468,7 +471,7 @@ background-color: var(--background-grey-buttons);
 
   transition-property: background-color;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--cubic);
 }
 
 .social-link:hover .social-icon ,
@@ -489,7 +492,7 @@ fill: var(--icon-grey);
 
 transition-property: fill;
 transition-duration: 250ms;
-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+transition-timing-function: var(--cubic);
 
 }
 
@@ -520,12 +523,12 @@ transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   justify-content: center;
   align-items: center;
 
-  border: 1px solid var(--client-box-border);
+  border: 1px solid var(--icon-grey);
   border-radius: 4%;
 
   transition-property: border;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--cubic);
 }
 
 .client-link:hover .client-icon,
@@ -546,7 +549,8 @@ transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   transition-property: fill;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--cubic);
+;
 
 }
 
@@ -579,7 +583,7 @@ transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   transition-property: color, background-color, box-shadow;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--cubic);
 
   
 }
@@ -640,7 +644,7 @@ transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 .project {
   transition-property: box-shadow;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--cubic);
   
 }
 
@@ -669,7 +673,7 @@ transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(100%);
   transition-property: transform;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--cubic);
 
   color: var(--about-header-color);
   background-color: var(--portf-project-overflow);
@@ -759,7 +763,7 @@ gap: 10px;
 
   transition-property: background-color;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--cubic);
 
 }
 
@@ -781,11 +785,11 @@ gap: 10px;
   align-items: center;
   width: 20px;
   height: 20px;
-  fill: var(--icon-white);
+  fill: var(--basic-white);
 
   transition-property: fill;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--cubic);
 }
 
 .backdrop {
@@ -794,6 +798,10 @@ gap: 10px;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
+
+  transition-property: opacity, visibility;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal {
@@ -802,7 +810,8 @@ gap: 10px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 
   background-color: rgba(255, 255, 255, 1);
@@ -810,20 +819,8 @@ gap: 10px;
   border-radius: 4px;
 }
 
-.modal-close {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-
-  width: 30px;
-  height: 30px;
-  border: 1px solid tomato;
-  border-radius: 50%;
-  background-color: #ffffff;
-
-  transition-property: fill;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+.backdrop.is-hidden .modal {
+ transform: translate(-50%, -50%) scaleY(0);
 }
 
 .is-hidden {
@@ -831,3 +828,34 @@ gap: 10px;
   visibility: hidden;
   pointer-events: none;
 }
+
+.modal-exit {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--exit-button-color) ;
+  border-radius: 50%;
+  background-color: #ffffff;
+
+  transition-property: fill;
+  transition-duration: 250ms;
+  transition-timing-function: var(--cubic);
+}
+
+.icon-exit {
+  position: absolute;
+  fill: var(--absolute-black);
+  width: 18px;
+  height: 18px;
+
+
+}
+
+
+
